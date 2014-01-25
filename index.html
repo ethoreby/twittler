@@ -11,9 +11,6 @@
     <script>
 	
       $(document).ready(function(){
-        var $body = $('body');
-        //$body.html('');
-		//debugger;
 		
         var index = streams.home.length - 1;
 		var prevTime;
@@ -29,11 +26,13 @@
 					year: "numeric", month: "numeric",
 					day: "numeric", hour: "numeric", minute: "2-digit"
 				};
-				//debugger;
-				var builtTweet = "<div class='tweet'>@" + tweet.user + ":" + tweet.message + "<br><b>" + tweet.created_at.toLocaleTimeString("en-US", options); + "</b>" + "</div>";
+				
+				var user = "<span class='tweet_user'>@" + tweet.user + "</span> : ";
+				var timestamp = "<div class='tweet_timestamp'>" + tweet.created_at.toLocaleTimeString("en-US", options); + "</div>";
+				var builtTweet = "<div class='tweet'>" + user + tweet.message + timestamp + "</div>";
 				$("#feed_header").after(builtTweet);
-				while($("div").length > 15) {	//allow only newest 15 tweets
-					$("div").last().remove();
+				while($(".tweet").length > 12) {	//allow only newest 15 tweets
+					$(".tweet").last().remove();
 				}
 				index++;
 			}
@@ -49,11 +48,13 @@
     </script>
 	
 	<div id="header">
-		<h1>Twittler</h1>
+		<img id="logo" src="twittler_logo.png" height="60px"><h1>Twittler</h1>
 	</div>
 	
-	<button class="refresh">Refresh Tweets</button>
-	<h1 id="feed_header">your feed:</h1>
+	<div id="content">
+		<button class="refresh">Refresh Tweets</button>
+		<h1 id="feed_header">your feed:</h1>
+	</div>
 	
   </body>
 </html>

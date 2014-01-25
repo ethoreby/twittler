@@ -1,6 +1,31 @@
 body{
-	
+	background-color: firebrick;
 }
-#header{
-	background-color:#66CCFF;
+#header {
+	font: menu;
+	font-size: x-large;
+	padding-left: 220px;
+	color: white;
+}
+#logo{
+	float: left;
+	padding-right: 10px;
+}
+#content {
+	background: white;
+	margin-right: 200px;
+	margin-left: 200px;
+	padding: 50px;
+}
+.tweet {
+	padding-top: 10px;
+	padding-left: 40px;
+}
+.tweet_user {
+	font-family: sans-serif;
+	color: orangered;
+}
+.tweet_timestamp{
+	color:#999999;
+	padding-left: 15px;
 }
