@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
+	<link rel="stylesheet" href="twittler_css.css" type="text/css">
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
+	
+	<title>Twittler</title>
   </head>
   <body>
     <script>
@@ -10,7 +13,6 @@
       $(document).ready(function(){
         var $body = $('body');
         //$body.html('');
-
 		//debugger;
 		
         var index = streams.home.length - 1;
@@ -28,8 +30,8 @@
 					day: "numeric", hour: "numeric", minute: "2-digit"
 				};
 				//debugger;
-				var builtTweet = "<div>@" + tweet.user + ":" + tweet.message + "<br><b>" + tweet.created_at.toLocaleTimeString("en-US", options); + "</b>" + "</div>";
-				$("h1").first().after(builtTweet);
+				var builtTweet = "<div class='tweet'>@" + tweet.user + ":" + tweet.message + "<br><b>" + tweet.created_at.toLocaleTimeString("en-US", options); + "</b>" + "</div>";
+				$("#feed_header").after(builtTweet);
 				while($("div").length > 15) {	//allow only newest 15 tweets
 					$("div").last().remove();
 				}
@@ -46,8 +48,12 @@
       });
     </script>
 	
+	<div id="header">
+		<h1>Twittler</h1>
+	</div>
+	
 	<button class="refresh">Refresh Tweets</button>
-	<h1>your feed:</h1>
+	<h1 id="feed_header">your feed:</h1>
 	
   </body>
 </html>
