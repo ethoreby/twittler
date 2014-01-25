@@ -23,9 +23,13 @@
 			
 			while(index < length){
 				var tweet = streams.home[index];
-				var $tweet = $('<div></div>');
-				$tweet.text('@' + tweet.user + ': ' + tweet.message);
-				$("h1").first().after($tweet);
+				var options = {
+					year: "numeric", month: "numeric",
+					day: "numeric", hour: "numeric", minute: "2-digit"
+				};
+				//debugger;
+				var builtTweet = "<div>@" + tweet.user + ":" + tweet.message + "<br><b>" + tweet.created_at.toLocaleTimeString("en-US", options); + "</b>" + "</div>";
+				$("h1").first().after(builtTweet);
 				while($("div").length > 15) {	//allow only newest 15 tweets
 					$("div").last().remove();
 				}
