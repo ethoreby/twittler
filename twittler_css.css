@@ -4,22 +4,37 @@ body{
 #header {
 	font: menu;
 	font-size: x-large;
-	padding-left: 220px;
+	padding-left: 120px;
 	color: white;
 }
 #logo{
 	float: left;
 	padding-right: 10px;
 }
+#center_offset {
+	width: 0px;
+	margin: auto;
+	overflow: visible;
+}
 #content {
 	background: white;
-	margin-right: 200px;
-	margin-left: 200px;
+	margin-right: 100px;
+	margin-left: 100px;
 	padding: 50px;
 }
+#feed_header {
+	margin-left: -180px;
+	max-width: 180px;
+	font: menu;
+	font-size: x-large;
+}
 .tweet {
-	padding-top: 10px;
-	padding-left: 40px;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 30em;
+	margin-bottom: 15px;
+	padding: 8px;
+	border: 1px solid orangered;
 }
 .tweet_user {
 	font-family: sans-serif;
