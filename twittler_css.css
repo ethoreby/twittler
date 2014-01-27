@@ -57,10 +57,19 @@ body{
 	font-weight: bold;
 }
 .tweet_user:hover {
-	color: brown;
+	color: darkslategrey;
 }
 .tweet_message {
 	font-size: 14px;
+}
+.new_tag {
+	float: right;
+	font-family: serif;
+	font-size: x-large;
+	font-weight: bold;
+	color: goldenrod;
+	opacity: 0;
+	position: relative;
 }
 .tweet_timestamp{
 	color:#999999;

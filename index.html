@@ -27,11 +27,14 @@
 					day: "numeric", hour: "numeric", minute: "2-digit"
 				};
 				
+				var newTag = "<div class='new_tag'>New!</div>";
 				var user = "<span class='tweet_user'>@" + tweet.user + "</span> : ";
 				var message = "<span class='tweet_message'>" + tweet.message + "</span>"
 				var timestamp = "<div class='tweet_timestamp'>" + tweet.created_at.toLocaleTimeString("en-US", options); + "</div>";
-				var builtTweet = "<div class='tweet'>" + user + message + timestamp + "</div>";
+				var builtTweet = $("<div class='tweet'>" + user + message + newTag + timestamp + "</div>");
 				$("#feed_header").after(builtTweet);
+				builtTweet.find(".new_tag").animate({"opacity":"1", "top":"-22px"}, 800);
+				builtTweet.find(".new_tag").animate({"opacity":"0"}, 1200);
 				while($(".tweet").length > 12) {	//allow only newest 12 tweets
 					$(".tweet").last().remove();
 				}
@@ -54,7 +57,7 @@
 	
 	<div id="content">
 		<div id="input_bar">
-			<input id="tweet_input" type="text" size="50"></input>
+			<input id="tweet_input" type="text" size="60"></input>
 			<button id="tweet_button">Tweet!</button>
 			<select id="feed_selector"><option value="main_feed">main feed</option></select>
 			<button id="refresh">Refresh Tweets</button>
