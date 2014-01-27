@@ -31,8 +31,8 @@
 				var message = "<span class='tweet_message'>" + tweet.message + "</span>"
 				var timestamp = "<div class='tweet_timestamp'>" + tweet.created_at.toLocaleTimeString("en-US", options); + "</div>";
 				var builtTweet = "<div class='tweet'>" + user + message + timestamp + "</div>";
-				$("#center_offset").after(builtTweet);
-				while($(".tweet").length > 12) {	//allow only newest 15 tweets
+				$("#feed_header").after(builtTweet);
+				while($(".tweet").length > 12) {	//allow only newest 12 tweets
 					$(".tweet").last().remove();
 				}
 				index++;
@@ -40,7 +40,7 @@
 			prevLength = streams.home.length;
 		}
 		
-		$(".refresh").on("click", function() {
+		$("#refresh").on("click", function() {
 			refreshTweets();
 		});
 		
@@ -53,10 +53,13 @@
 	</div>
 	
 	<div id="content">
-		<button class="refresh">Refresh Tweets</button>
-		<div id="center_offset">
-			<h1 id="feed_header">Your Feed:</h1>
+		<div id="input_bar">
+			<input id="tweet_input" type="text" size="50"></input>
+			<button id="tweet_button">Tweet!</button>
+			<select id="feed_selector"><option value="main_feed">main feed</option></select>
+			<button id="refresh">Refresh Tweets</button>
 		</div>
+		<h1 id="feed_header">Your Feed:</h1>
 	</div>
 	
   </body>

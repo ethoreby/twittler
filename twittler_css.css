@@ -4,8 +4,10 @@ body{
 #header {
 	font-family: sans-serif;
 	font-size: x-large;
-	padding-left: 120px;
 	color: white;
+	margin-left: auto;
+	margin-right: auto;
+	width: 800px;
 }
 #logo{
 	float: left;
@@ -18,13 +20,28 @@ body{
 }
 #content {
 	background: white;
-	margin-right: 100px;
-	margin-left: 100px;
-	padding: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 800px;
+	padding-bottom: 10px;
 }
 #feed_header {
-	margin-left: -180px;
-	max-width: 180px;
+    margin-left: 150px;
+}
+#input_bar {
+	background: darkslategrey;
+	padding: 8px;
+}
+#tweet_input {
+	margin-left: 10px;
+}
+#refresh {
+	float: right;
+	margin-right: 10px;
+}
+#feed_selector {
+	float: right;
+	margin-right: 10px;
 }
 .tweet {
 	margin-left: auto;
@@ -43,7 +60,7 @@ body{
 	color: brown;
 }
 .tweet_message {
-font-size: 14px;
+	font-size: 14px;
 }
 .tweet_timestamp{
 	color:#999999;
