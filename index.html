@@ -28,8 +28,9 @@
 				};
 				
 				var user = "<span class='tweet_user'>@" + tweet.user + "</span> : ";
+				var message = "<span class='tweet_message'>" + tweet.message + "</span>"
 				var timestamp = "<div class='tweet_timestamp'>" + tweet.created_at.toLocaleTimeString("en-US", options); + "</div>";
-				var builtTweet = "<div class='tweet'>" + user + tweet.message + timestamp + "</div>";
+				var builtTweet = "<div class='tweet'>" + user + message + timestamp + "</div>";
 				$("#center_offset").after(builtTweet);
 				while($(".tweet").length > 12) {	//allow only newest 15 tweets
 					$(".tweet").last().remove();

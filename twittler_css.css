@@ -2,7 +2,7 @@ body{
 	background-color: firebrick;
 }
 #header {
-	font: menu;
+	font-family: sans-serif;
 	font-size: x-large;
 	padding-left: 120px;
 	color: white;
@@ -25,8 +25,6 @@ body{
 #feed_header {
 	margin-left: -180px;
 	max-width: 180px;
-	font: menu;
-	font-size: x-large;
 }
 .tweet {
 	margin-left: auto;
@@ -35,12 +33,20 @@ body{
 	margin-bottom: 15px;
 	padding: 8px;
 	border: 1px solid orangered;
+	font-family: sans-serif;
 }
 .tweet_user {
-	font-family: sans-serif;
 	color: orangered;
+	font-weight: bold;
+}
+.tweet_user:hover {
+	color: brown;
+}
+.tweet_message {
+font-size: 14px;
 }
 .tweet_timestamp{
 	color:#999999;
 	padding-left: 15px;
+	font-family: monospace;
 }
