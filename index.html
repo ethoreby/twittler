@@ -12,39 +12,48 @@
 	
       $(document).ready(function(){
 		
-        var index = streams.home.length - 1;
-		var prevTime;
-		var prevLength = 0;
+		var refreshTweets = function(username) {
 		
-		var refreshTweets = function() {
-			var length = streams.home.length;
-			index = prevLength;
+			var dateOptions = {year: "numeric", month: "numeric", day: "numeric", hour: "numeric", minute: "2-digit"};
+			var tweetArr = streams.home;
 			
-			while(index < length){
-				var tweet = streams.home[index];
-				var options = {
-					year: "numeric", month: "numeric",
-					day: "numeric", hour: "numeric", minute: "2-digit"
-				};
-				
+			/*if(typeof username != "undefined" && username != "main_feed") {	//select only one username
+				var result = [];
+				tweetArr.forEach(function(object) {
+					if(typeof object.user === undefined){debugger;}
+					if(object.user === username) {
+						result.push(object);
+					}
+				});
+				tweetArr = result;
+			}*/
+			
+			$(".tweet").remove();		//remove all old tweets
+			
+			var index = tweetArr.length - 13;
+			if(index < 0) {
+				index = 0;
+			}
+			
+			while(index < tweetArr.length){		//only show newest 12 tweets
+				var tweet = tweetArr[index];
+			
 				var twNewTag = "<div class='new_tag'>New!</div>";
-				var twUser = "<span class='tweet_user'>@" + tweet.user + "</span> : ";
+				var twUser = "<span class='tweet_user'>@" + tweet.user + "</span>: ";
 				var twMessage = "<span class='tweet_message'>" + tweet.message + "</span>"
-				var twTimestamp = "<div class='tweet_timestamp'>" + tweet.created_at.toLocaleTimeString("en-US", options); + "</div>";
+				var twTimestamp = "<div class='tweet_timestamp'>" + tweet.created_at.toLocaleTimeString("en-US", dateOptions); + "</div>";
 				var builtTweet = $("<div class='tweet'>" + twUser + twMessage + twNewTag + twTimestamp + "</div>");
+				
 				$("#feed_header").after(builtTweet);
 				builtTweet.find(".new_tag").animate({"opacity":"1", "top":"-22px"}, 800);
 				builtTweet.find(".new_tag").animate({"opacity":"0"}, 1200);
-				while($(".tweet").length > 12) {	//allow only newest 12 tweets
-					$(".tweet").last().remove();
-				}
 				index++;
 			}
 			prevLength = streams.home.length;
 		}
 		
 		$("#refresh").on("click", function() {
-			refreshTweets();
+			refreshTweets("sharksforcheap");
 		});
 		
 		//initializing page
