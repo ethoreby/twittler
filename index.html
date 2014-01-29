@@ -20,13 +20,7 @@
 			var tweetArr = streams.home;
 			
 			if(typeof username != "undefined" && username != "main_feed") {	//select only one username
-				var result = [];
-				tweetArr.forEach(function(object) {
-					if(object.user === username) {
-						result.push(object);
-					}
-				});
-				tweetArr = result;
+				tweetArr = streams.users[username];
 			}
 			
 			$(".tweet").remove();		//remove all old tweets
