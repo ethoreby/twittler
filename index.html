@@ -10,7 +10,7 @@
   <body>
     <script>
 	
-      $(document).ready(function(){
+    $(document).ready(function(){
 		
 		var prevTime = 0;
 		
@@ -46,17 +46,21 @@
 				var builtTweet = $("<div class='tweet'>" + twUser + twMessage + twNewTag + twTimestamp + "</div>");
 				
 				$("#feed_header").after(builtTweet);
-				if(prevTime < tweet.created_at) {
-					builtTweet.find(".new_tag").animate({"opacity":"1", "top":"-22px"}, 800);
+				if(prevTime < tweet.created_at) {		//must be created after last tweet refresh
+					builtTweet.find(".new_tag").animate({"opacity":"1", "top":"-22px"}, 800);	//new tweet animation
 					builtTweet.find(".new_tag").animate({"opacity":"0"}, 1200);
 				}
 				index++;
 			}
-			prevTime = streams.home[streams.home.length - 1].created_at;
+			prevTime = tweetArr[tweetArr.length - 1].created_at;
 		}
 		
 		$("#refresh").on("click", function() {
-			refreshTweets();
+			refreshTweets($("#feed_selector").val());
+		});
+		
+		$("#feed_selector").on("change", function() {
+			refreshTweets($(this).val());
 		});
 		
 		//initializing page
@@ -65,7 +69,8 @@
 			$("#feed_selector").find("option").last().after($("<option />").val(user).text("@" + user));		
 		});
 		refreshTweets();	//initial refresh to populate page
-      });
+    });
+	
     </script>
 	
 	<div id="header">
