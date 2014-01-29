@@ -12,6 +12,8 @@
 	
       $(document).ready(function(){
 		
+		var prevTime = 0;
+		
 		var refreshTweets = function(username) {
 		
 			var dateOptions = {year: "numeric", month: "numeric", day: "numeric", hour: "numeric", minute: "2-digit"};
@@ -29,12 +31,12 @@
 			
 			$(".tweet").remove();		//remove all old tweets
 			
-			var index = tweetArr.length - 13;
+			var index = tweetArr.length - 14;
 			if(index < 0) {
 				index = 0;
 			}
 			
-			while(index < tweetArr.length){		//only show newest 12 tweets
+			while(index < tweetArr.length){		//only show newest 14 tweets
 				var tweet = tweetArr[index];
 			
 				var twNewTag = "<div class='new_tag'>New!</div>";
@@ -44,11 +46,13 @@
 				var builtTweet = $("<div class='tweet'>" + twUser + twMessage + twNewTag + twTimestamp + "</div>");
 				
 				$("#feed_header").after(builtTweet);
-				builtTweet.find(".new_tag").animate({"opacity":"1", "top":"-22px"}, 800);
-				builtTweet.find(".new_tag").animate({"opacity":"0"}, 1200);
+				if(prevTime < tweet.created_at) {
+					builtTweet.find(".new_tag").animate({"opacity":"1", "top":"-22px"}, 800);
+					builtTweet.find(".new_tag").animate({"opacity":"0"}, 1200);
+				}
 				index++;
 			}
-			prevLength = streams.home.length;
+			prevTime = streams.home[streams.home.length - 1].created_at;
 		}
 		
 		$("#refresh").on("click", function() {
