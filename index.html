@@ -17,16 +17,15 @@
 			var dateOptions = {year: "numeric", month: "numeric", day: "numeric", hour: "numeric", minute: "2-digit"};
 			var tweetArr = streams.home;
 			
-			/*if(typeof username != "undefined" && username != "main_feed") {	//select only one username
+			if(typeof username != "undefined" && username != "main_feed") {	//select only one username
 				var result = [];
 				tweetArr.forEach(function(object) {
-					if(typeof object.user === undefined){debugger;}
 					if(object.user === username) {
 						result.push(object);
 					}
 				});
 				tweetArr = result;
-			}*/
+			}
 			
 			$(".tweet").remove();		//remove all old tweets
 			
@@ -53,7 +52,7 @@
 		}
 		
 		$("#refresh").on("click", function() {
-			refreshTweets("sharksforcheap");
+			refreshTweets();
 		});
 		
 		//initializing page
