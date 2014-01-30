@@ -72,12 +72,25 @@
 		if(myUsername == null) {
 			myUsername = "user"
 		}
+		streams.users[myUsername] = [];
 		$("#feed_selector").find("option").after($("<option />").val(myUsername).text("@" + myUsername));
 		
 		users.forEach(function(user) {			//populate the selector list
 			$("#feed_selector").find("option").last().after($("<option />").val(user).text("@" + user));		
 		});
 		refreshTweets();	//initial refresh to populate page
+		
+		$("#tweet_button").on("click", function() {
+		var see = streams.users;
+			addTweet({	"created_at" : new Date(),
+						"message" : "TEST MESSAGE",
+						"user" : myUsername});
+			if($("#feed_selector").val() == myUsername) {
+				refreshTweets($("#feed_selector").val());
+			}else {
+				refreshTweets();
+			}
+		});
     });
 	
     </script>
