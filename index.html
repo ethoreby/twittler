@@ -5,14 +5,18 @@
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
 	
+	<!--<script src="jquery.min.js" type="text/javascript"></script> -->
+	<script src="jquery.timeago.js" type="text/javascript"></script>
+	
 	<title>Twittler</title>
   </head>
   <body>
     <script>
 	
     $(document).ready(function(){
-		
-		var prevTime = 0;
+		jQuery("abbr.timeago").timeago();
+		//alert(jQuery.timeago("2008-07-17"));
+		var prevTime = 0;	//when the last seen tweet was created
 		
 		var refreshTweets = function(username) {
 		
@@ -39,7 +43,8 @@
 				var twNewTag = "<div class='new_tag'>New!</div>";
 				var twUser = "<span class='tweet_user'>@" + tweet.user + "</span>: ";
 				var twMessage = "<span class='tweet_message'>" + tweet.message + "</span>"
-				var twTimestamp = "<div class='tweet_timestamp'>" + tweet.created_at.toLocaleTimeString("en-US", dateOptions); + "</div>";
+				var twTimeAgo = "<span class='time_elapsed'>" + jQuery.timeago(tweet.created_at) + "</span>";
+				var twTimestamp = "<div class='tweet_timestamp'>" + tweet.created_at.toLocaleTimeString("en-US", dateOptions) + " -- " + twTimeAgo + "</div>";
 				var builtTweet = $("<div class='tweet'>" + twUser + twMessage + twNewTag + twTimestamp + "</div>");
 				
 				$("#feed_header").after(builtTweet);
