@@ -81,14 +81,16 @@
 		refreshTweets();	//initial refresh to populate page
 		
 		$("#tweet_button").on("click", function() {
-		var see = streams.users;
-			addTweet({	"created_at" : new Date(),
-						"message" : "TEST MESSAGE",
-						"user" : myUsername});
-			if($("#feed_selector").val() == myUsername) {
-				refreshTweets($("#feed_selector").val());
-			}else {
-				refreshTweets();
+			if($("#tweet_input").val() !== "") {		//only tweet if input is not blank
+				addTweet({	"created_at" : new Date(),
+							"message" : $("#tweet_input").val(),
+							"user" : myUsername});
+				$("#tweet_input").val("");
+				if($("#feed_selector").val() == myUsername) {	//refresh myUsername or all tweets
+					refreshTweets($("#feed_selector").val());
+				}else {
+					refreshTweets();
+				}
 			}
 		});
     });
