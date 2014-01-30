@@ -56,6 +56,9 @@ body{
 	color: orangered;
 	font-weight: bold;
 }
+.tweet_user:hover{
+	color: darkslategrey;
+}
 .tweet_message {
 	font-size: 14px;
 }

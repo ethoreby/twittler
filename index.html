@@ -21,7 +21,12 @@
 			
 			if(typeof username != "undefined" && username != "main_feed") {	//select only one username
 				tweetArr = streams.users[username];
+				$("#feed_header").text("@" + username + "'s Tweets:");
+			}else {
+				$("#feed_header").text("Your Feed:");
 			}
+			
+			
 			
 			$(".tweet").remove();		//remove all old tweets
 			
@@ -47,6 +52,13 @@
 				index++;
 			}
 			prevTime = tweetArr[tweetArr.length - 1].created_at;
+			
+			$(".tweet_user").on("click", function() {		//this function must be initialized after tweets exist
+				var selectedUser = $(this).text();
+				selectedUser = selectedUser.slice(1, selectedUser.length);
+				$("#feed_selector").val(selectedUser);
+				refreshTweets($("#feed_selector").val());
+			});
 		}
 		
 		$("#refresh").on("click", function() {
