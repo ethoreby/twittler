@@ -4,8 +4,6 @@
 	<link rel="stylesheet" href="twittler_css.css" type="text/css">
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
-	
-	<!--<script src="jquery.min.js" type="text/javascript"></script> -->
 	<script src="jquery.timeago.js" type="text/javascript"></script>
 	
 	<title>Twittler</title>
@@ -15,7 +13,6 @@
 	
     $(document).ready(function(){
 		jQuery("abbr.timeago").timeago();
-		//alert(jQuery.timeago("2008-07-17"));
 		var prevTime = 0;	//when the last seen tweet was created
 		
 		var refreshTweets = function(username) {
@@ -32,12 +29,12 @@
 			
 			$(".tweet").remove();		//remove all old tweets
 			
-			var index = tweetArr.length - 14;
+			var index = tweetArr.length - 14;		//only show newest 14 tweets
 			if(index < 0) {
 				index = 0;
 			}
 			
-			while(index < tweetArr.length){		//only show newest 14 tweets
+			while(index < tweetArr.length){
 				var tweet = tweetArr[index];
 			
 				var twNewTag = "<div class='new_tag'>New!</div>";
