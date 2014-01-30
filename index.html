@@ -26,8 +26,6 @@
 				$("#feed_header").text("Your Feed:");
 			}
 			
-			
-			
 			$(".tweet").remove();		//remove all old tweets
 			
 			var index = tweetArr.length - 14;
@@ -70,7 +68,12 @@
 		});
 		
 		//initializing page
-		var selector = $("#feed_selector");
+		var myUsername = prompt("Please enter your username:", "user");		//create a username to tweet with
+		if(myUsername == null) {
+			myUsername = "user"
+		}
+		$("#feed_selector").find("option").after($("<option />").val(myUsername).text("@" + myUsername));
+		
 		users.forEach(function(user) {			//populate the selector list
 			$("#feed_selector").find("option").last().after($("<option />").val(user).text("@" + user));		
 		});
